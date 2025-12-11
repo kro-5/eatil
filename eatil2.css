@@ -1,0 +1,110 @@
+/* تنسيق عام للصفحة */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff; /* لون النص أبيض ليناسب الخلفية الداكنة */
+    text-align: center;
+    overflow: hidden; /* لمنع ظهور شريط التمرير إذا كان الفيديو أكبر من الشاشة */
+}
+
+/* 1. الخلفية المتحركة (فيديو أو صورة متحركة) */
+.background-video {
+    position: fixed; /* لتثبيت الخلفية */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* لوضعه خلف باقي المحتوى */
+    overflow: hidden;
+    background-color: #000000; /* خلفية سوداء احتياطية */
+}
+
+/* مثال لاستخدام فيديو كخلفية */
+#myVideo { 
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* إضافة طبقة شفافة لتباين أوضح للمحتوى */
+.background-video::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* طبقة سوداء شفافة بنسبة 50% */
+}
+
+/* حاوية المحتوى الرئيسي (الشعار والبانر) */
+.content-wrapper {
+    position: relative;
+    z-index: 1; /* ليكون فوق الخلفية */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* ليغطي كامل ارتفاع الشاشة */
+    padding: 20px;
+}
+
+/* 2. الشعار الدائري */
+.logo-circle {
+    width: 150px; /* حجم الشعار */
+    height: 150px;
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    object-fit: cover; /* لضمان ملء الصورة للحجم المحدد */
+    border: 5px solid #ff5722; /* حدود برتقالية (يمكن تغيير اللون) */
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.8); /* ظل حول الشعار */
+    margin-bottom: 20px;
+}
+
+/* 3. البانر الأوسط */
+.social-banner {
+    background-color: rgba(0, 0, 0, 0.7); /* خلفية شبه شفافة للبانر */
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+}
+
+.social-banner h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.social-banner p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #cccccc;
+}
+
+/* تنسيق أيقونات التواصل */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* المسافة بين الأيقونات */
+}
+
+.social-icon {
+    color: #ffffff; /* لون الأيقونة */
+    font-size: 2.5em;
+    transition: transform 0.3s ease, color 0.3s ease; /* لإضافة تأثير عند المرور عليها */
+}
+
+.social-icon:hover {
+    transform: scale(1.15); /* تكبير الأيقونة عند المرور عليها */
+}
+
+/* ألوان مخصصة عند المرور */
+.fa-instagram:hover { color: #E4405F; }
+.fa-tiktok:hover { color: #69C9D0; }
+.fa-discord:hover { color: #7289DA; }
+.fa-snapchat-ghost:hover { color: #FFFC00; }
